@@ -1,0 +1,53 @@
+{
+  "author": {
+    "name": "js.koahub.com"
+  },
+  "bugs": {
+    "url": "https://github.com/koahubjs/koahub-mysql/issues"
+  },
+  "dependencies": {
+    "bookshelf": "^0.10.3",
+    "bookshelf-modelbase": "^2.10.3",
+    "knex": "^0.12.8",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "istanbul": "1.1.0-alpha.1",
+    "mocha": "3.2.0",
+    "supertest": "3.0.0"
+  },
+  "directories": {},
+  "engines": {
+    "node": ">= 7.6.0"
+  },
+  "keywords": [
+    "orm",
+    "mysql",
+    "postgresql",
+    "sqlite",
+    "datamapper",
+    "active record",
+    "koa",
+    "koahub",
+    "koahubjs"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "maintainers": [
+    {
+      "name": "einsqing",
+      "email": "786699892@qq.com"
+    }
+  ],
+  "name": "koahub-mysql",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koahubjs/koahub-mysql.git"
+  },
+  "scripts": {
+    "test": "mocha --recursive test/{,**/}*.test.js",
+    "cover": "istanbul cover _mocha -- --recursive test/{,**/}*.test.js"
+  },
+  "version": "0.0.1"
+}
