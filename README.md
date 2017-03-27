@@ -4,9 +4,8 @@ KoaHub Mysql -- KoaHub.js mysql库。
 
 ## 特性
 1. 支持created_at, updated_at时间戳
-2. 支持数据库字段验证
-3. 支持 `findAll`, `findOne`, `findOrCreate`, `create`, `update`, and `destroy`
-4. ...
+2. 支持 `find`, `findAll`, `save`, `saveAll`, `delete`, `deleteAll`
+3. ...
 
 ## 安装
 ```js
@@ -50,7 +49,7 @@ module.exports = class extends koahub.controller {
     async index() {
     	 
     	const user = await this.model('user').findAll();
-      this.view(user);
+        this.view(user);
     }
 }
 
@@ -60,7 +59,7 @@ module.exports = koahub.model.extend({
     hasTimestamps: true
 });
 ```
-###API
+### API
 ```
 // 查询
 this.model('user').find();
