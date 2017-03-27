@@ -48,163 +48,41 @@ module.exports = class extends koahub.controller {
     }
 
     async index() {
-    	
-    	await this.model('user').create({ firstName: 'Grayson' });
-      
-    	const grayson = await this.model('user').findOne({ firstName: 'Grayson' }, { require: true });
-      	const basil = await this.model('user').update({ firstName: 'Basil' }, { id: grayson.id });
-      
-      	await this.model('user').destroy({ id: basil.id });
-      
-      	const collection = this.model('user').findAll();
-      	this.view(collection);
+    	 
+    	const user = await this.model('user').findAll();
+      this.view(user);
     }
 }
 
 // app/model/user.model.js
 module.exports = koahub.model.extend({
-  tableName: 'users'
-
-  // validation is passed to Joi.object(), so use a raw object
-  validate: {
-    firstName: Joi.string()
-  }
+    tableName: 'user',
+    hasTimestamps: true
 });
 ```
-
-
-### API
-
-#### model.create
-
-```js
-/**
-  * Naive add - create and save a model based on data
-  * @param {Object} data
-  * @param {Object} options (optional)
-  * @return {Promise(bookshelf.Model)} single Model
-  */
-create: function (data, options) {
-  return this.forge(data)
-  .save(null, options);
-}
+###API
 ```
+// 查询
+this.model('user').find();
+// 查询所有
+this.model('user').findAll();
+// 新增或者修改
+this.model('user').save();
+// 新增或者修改所有
+this.model('user').saveAll();
+// 删除
+this.model('user').delete();
+// 删除所有
+this.model('user').deleteAll();
 
-#### model.destroy
+// 更多方法请参考bookshelf
+this.model('user').query();
+this.model('user').count();
+this.model('user').where();
+this.model('user').fetchPage();
+...
 
-```js
-/**
-  * Naive destroy
-  * @param {Object} options
-  * @return {Promise(bookshelf.Model)} empty Model
-  */
-destroy: function (options) {
-  return this.forge({ [this.prototype.idAttribute]: options.id })
-  .destroy(options);
-}
 ```
-
-#### model.findAll
-
-```javascript
-/**
-  * Naive findAll - fetches all data for `this`
-  * @param {Object} options (optional)
-  * @return {Promise(bookshelf.Collection)} Bookshelf Collection of all Models
-  */
-findAll: function (options) {
-  return bookshelf.Collection.forge([], { model: this }).fetch(options);
-}
-```
-
-#### model.findById
-
-```javascript
-/**
- * Find a model based on it's ID
- * @param {String} id The model's ID
- * @param {Object} [options] Options used of model.fetch
- * @return {Promise(bookshelf.Model)}
- */
-findById: function (id, options) {
-  return this.findOne({ [this.prototype.idAttribute]: id }, options)
-}
-```
-
-#### model.findOne
-
-```js
-/**
-  * Naive findOne - fetch data for `this` matching data
-  * @param {Object} data
-  * @param {Object} options (optional)
-  * @return {Promise(bookshelf.Model)} single Model
-  */
-findOne: function (data, options) {
-  return this.forge(data).fetch(options);
-}
-```
-
-#### model.findOrCreate
-```js
-/**
-  * Find or create - try and find the model, create one if not found
-  * @param {Object} data
-  * @param {Object} options
-  * @return {Promise(bookshelf.Model)} single Model
-  */
-findOrCreate: function (data, options) {
-  var self = this;
-
-  return self.findOne(data, options)
-  .then(function (model) {
-    return model ? model : self.create(data, options);
-  })
-}
-```
-
-#### model.update
-
-```js
-/**
-  * Naive update - update a model based on data
-  * @param {Object} data
-  * @param {Object} options
-  * @return {Promise(bookshelf.Model)} edited Model
-  */
-update: function (data, options) {
-  _.defaults(options, {
-    patch: true
-  });
-  return this.forge({ [this.prototype.idAttribute]: options.id }).fetch(options)
-  .then(function (model) {
-    if (model) {
-      return model.save(data, options);
-    }
-  })
-}
-```
-
-### model.upsert
-```js
-/**
-  * Upsert - select a model based on data and update if found, insert if not found
-  * @param {Object} selectData Data for select
-  * @param {Object} updateData Data for update
-  * @param {Object} [options] Options for model.save
-  * @return {Promise(bookshelf.Model)} edited Model
-  */
-upsert: function (selectData, updateData, options) {
-  return this.findOne(selectData, extend(options, { require: false }))
-  .bind(this)
-  .then(function (model) {
-    return model
-      ? model.save(updateData, extend({ patch: true }, options))
-      : this.create(extend(selectData, updateData), options)
-  })
-}
-```
-
 
 ## KoaHub.js
 [KoaHub.js框架](https://github.com/koahubjs/koahub)

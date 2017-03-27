@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "bookshelf": "^0.10.3",
-    "bookshelf-modelbase": "^2.10.3",
     "knex": "^0.12.8",
     "mysql": "^2.13.0"
   },
@@ -49,5 +48,5 @@
     "test": "mocha --recursive test/{,**/}*.test.js",
     "cover": "istanbul cover _mocha -- --recursive test/{,**/}*.test.js"
   },
-  "version": "0.0.1"
+  "version": "0.1.0"
 }
