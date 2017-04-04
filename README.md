@@ -9,7 +9,7 @@ KoaHub Mysql -- KoaHub.js mysql库。
 
 ## 安装
 ```js
-npm install github:koahubjs/koahub-mysql --save
+npm install koahubjs/koahub-mysql --save
 ```
 
 ## 使用
