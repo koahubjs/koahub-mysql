@@ -66,6 +66,10 @@ this.model('user').find();
 // 查询所有
 this.model('user').findAll();
 // 新增或者修改
+this.model('user').add();
+// 新增或者修改所有
+this.model('user').addAll();
+// 新增或者修改
 this.model('user').save();
 // 新增或者修改所有
 this.model('user').saveAll();
