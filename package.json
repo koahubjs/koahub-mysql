@@ -48,5 +48,5 @@
     "test": "mocha --recursive test/{,**/}*.test.js",
     "cover": "istanbul cover _mocha -- --recursive test/{,**/}*.test.js"
   },
-  "version": "0.1.1"
+  "version": "0.1.2"
 }
