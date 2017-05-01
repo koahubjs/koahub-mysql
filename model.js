@@ -2,7 +2,7 @@ module.exports = function (_model) {
 
     const model = koahub.models[_model];
     if (!model) {
-        koahub.models[_model] = koahub.model.extend({
+        koahub.models[_model] = koahub.Model.extend({
             tableName: _model,
             hasTimestamps: true
         });
