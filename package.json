@@ -38,7 +38,7 @@
       "email": "786699892@qq.com"
     }
   ],
-  "name": "koahub-mysql",
+  "name": "@koahubjs/koahub-mysql",
   "optionalDependencies": {},
   "repository": {
     "type": "git",
@@ -48,5 +48,5 @@
     "test": "mocha --recursive test/{,**/}*.test.js",
     "cover": "istanbul cover _mocha -- --recursive test/{,**/}*.test.js"
   },
-  "version": "1.1.0"
+  "version": "1.2.0"
 }
