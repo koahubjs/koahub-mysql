@@ -6,9 +6,9 @@
     "url": "https://github.com/koahubjs/koahub-mysql/issues"
   },
   "dependencies": {
-    "bookshelf": "^0.10.3",
-    "knex": "^0.12.8",
-    "mysql": "^2.13.0"
+    "bookshelf": "0.10.4",
+    "knex": "0.12.9",
+    "mysql2": "^2.3.3"
   },
   "devDependencies": {
     "istanbul": "1.1.0-alpha.1",
